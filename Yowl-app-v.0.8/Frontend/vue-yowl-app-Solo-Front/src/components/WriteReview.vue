@@ -2,6 +2,7 @@
   <div>
     <div class="wrapper" v-if="user">
       <div class="container">
+        
         <h1>new review</h1>
         <form @submit.prevent="sendReview">
           <div class="form-group">
@@ -36,6 +37,7 @@
           </div>
           <button class="btn btn-primary btn-block">Send Review</button>
         </form>
+         <AddComment/>
       </div>
       <div @click="showReview" class="container">
         <h2>click</h2>
@@ -52,6 +54,7 @@
         </div>
         <div @click="showComments" class="container">
             <h3>Comments</h3>
+            
               <ul id="array-rendering">
                 <li v-for="(comentario, id) in comment" :key="id" class="item-container">
                   ID: "{{comentario.id}}"
@@ -60,6 +63,7 @@
                 </li>
               </ul>
           </div>
+         
       </div>
 
       
@@ -74,9 +78,13 @@
 <script>
 import axios from "axios";
 import { mapGetters } from "vuex";
+import AddComment from './AddComment.vue'
 
 export default {
   name: "WriteReview",
+  components:{
+    AddComment
+  },
   data() {
     return {
       userId: localStorage.getItem("userId"),

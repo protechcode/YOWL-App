@@ -5,6 +5,7 @@ import Register from '../components/Register.vue'
 import NewProvider from '../components/NewProvider.vue'
 import LoginProvider from '../components/LoginProvider.vue'
 import WriteReview from '../components/WriteReview.vue'
+import AddComment from '../components/AddComment.vue'
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path:'/review',
     name: 'WriteReview',
     component: WriteReview
+  },
+  {
+    path:'/comment',
+    name: 'AddComment',
+    component: AddComment
   },
 ]
 

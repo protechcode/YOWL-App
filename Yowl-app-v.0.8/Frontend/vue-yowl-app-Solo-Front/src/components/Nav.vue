@@ -34,6 +34,7 @@ export default {
     handleClick() {
       localStorage.removeItem("token");
       localStorage.removeItem("email");
+      localStorage.removeItem("userId");
       this.$store.dispatch('user', null)
       this.$router.go("/");
     },
