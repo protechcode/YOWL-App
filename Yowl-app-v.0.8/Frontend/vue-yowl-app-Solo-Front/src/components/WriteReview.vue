@@ -2,7 +2,7 @@
   <div>
     <div class="wrapper" v-if="user">
       <div class="container">
-        
+         <AddComment/>
         <h1>new review</h1>
         <form @submit.prevent="sendReview">
           <div class="form-group">
@@ -37,7 +37,6 @@
           </div>
           <button class="btn btn-primary btn-block">Send Review</button>
         </form>
-         <AddComment/>
       </div>
       <div @click="showReview" class="container">
         <h2>click</h2>
@@ -112,9 +111,7 @@ export default {
         });
         this.comment = responses.data;
 
-        console.log(responses.data[0].title);
-
-        console.log(responses.data[0].content);
+       
       }catch(error){
         console.log(error)
       }

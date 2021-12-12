@@ -1,0 +1,9 @@
+mysql> select * 
+from comments 
+inner join reviews on comments.review_id = reviews.id;
+
+select comments.title, reviews.title as 'review title' 
+from comments 
+inner join reviews on comments.review_id = reviews.id;////Shows title of review and title of comment
+
+
