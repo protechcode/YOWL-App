@@ -31,6 +31,7 @@ import ButtonLogin from './ButtonLogin.vue'
             return {
                 email: '',
                 password: '',
+                userId:'',
                 
             }
         },
@@ -48,8 +49,10 @@ import ButtonLogin from './ButtonLogin.vue'
                 console.log(response)
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('email', this.email)
+                localStorage.setItem('userId', response.data.user.id )
                 this.$store.dispatch('user', response.data.user);
                 this.$router.push('/');
+                
                 
 
 

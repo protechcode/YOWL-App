@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use JWTAuth;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Validator\Constraints\Length;
 
 class ReviewController extends Controller
 {
@@ -18,6 +19,7 @@ class ReviewController extends Controller
         if ($token != '')
             //En caso de que requiera autentifiación la ruta obtenemos el usuario y lo almacenamos en una variable, nosotros no lo utilizaremos.
             $this->user = JWTAuth::parseToken()->authenticate();
+        return response()->json(['token' => $token]);
     }
     /**
      * Display a listing of the resource.
@@ -27,8 +29,8 @@ class ReviewController extends Controller
     public function index()
     {
         //Listamos todos los Reviewos
-       $review = Review::get();
-       return response()->json(['review' => $review[0]]);
+        return Review::all();
+        
     }
     /**
      * Store a newly created resource in storage.
@@ -48,18 +50,18 @@ class ReviewController extends Controller
         $validator = Validator::make($data, [
             'title' => 'required|max:240|string',
             'content' => 'required|max:250|string',
-            
+
         ]);
         //Si falla la validación
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json($validator->errors()->toJson(), 400);
-    }
+        }
         //Creamos el Reviewo en la BD
         $review = Review::create([
             'title' => $request->title,
             'content' => $request->content,
             'user_id' => $request->user_id,
-            'provider_id' => $request->provider_id,            
+            'provider_id' => $request->provider_id,
         ]);
         //Respuesta en caso de que todo vaya bien.
         return response()->json([
@@ -100,19 +102,19 @@ class ReviewController extends Controller
         $validator = Validator::make($data, [
             'name' => 'required|max:50|string',
             'content' => 'required|max:50|string',
-            
+
         ]);
         //Si falla la validación error.
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json($validator->errors()->toJson(), 400);
-    }
+        }
         //Buscamos el Reviewo
         $review = Review::findOrfail($id);
         //Actualizamos el Reviewo.
         $review->update([
             'name' => $request->name,
             'content' => $request->content,
-         
+
         ]);
         //Devolvemos los datos actualizados.
         return response()->json([

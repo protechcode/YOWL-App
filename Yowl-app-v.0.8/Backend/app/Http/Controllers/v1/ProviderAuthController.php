@@ -74,7 +74,7 @@ class ProviderAuthController extends Controller
         try{
            /*  $token = JWTAuth::attempt($credentials);
             return response()->json($credentials); */
-            if (!$token = auth()->attempt($credentials)) {
+            if (!$token = JWTAuth::attempt($credentials)) {
                 
                 //Error en credenciales
                 return response()->json([
