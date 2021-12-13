@@ -2,8 +2,10 @@
   <nav class="navbar navbar-expand navbar-light fixed-top">
     <div class="container">
       <router-link to="/" class="navbar-brand">Home</router-link>
+            
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto" v-if="!user">
+        
           <li class="nav-item">
             <router-link to="/login" class="nav-link">Login</router-link>
           </li>
@@ -12,12 +14,13 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto" v-else>
+          <router-link to="/review" class="nav-link">New Review</router-link>
+
           <li class="nav-item">
-            <a  @click="handleClick" class="nav-link">Log Out</a
-            >
+            <a @click="handleClick" class="nav-link">Log Out</a>
           </li>
-           <li class="nav-item">
-            <router-link to="/review" class="nav-link">review</router-link>
+          <li class="nav-item">
+            <router-link to="/profile" class="nav-link">Profile</router-link>
           </li>
         </ul>
       </div>
@@ -35,7 +38,7 @@ export default {
       localStorage.removeItem("token");
       localStorage.removeItem("email");
       localStorage.removeItem("userId");
-      this.$store.dispatch('user', null)
+      this.$store.dispatch("user", null);
       this.$router.go("/");
     },
   },

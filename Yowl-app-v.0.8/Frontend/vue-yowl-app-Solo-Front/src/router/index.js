@@ -6,6 +6,8 @@ import NewProvider from '../components/NewProvider.vue'
 import LoginProvider from '../components/LoginProvider.vue'
 import WriteReview from '../components/WriteReview.vue'
 import AddComment from '../components/AddComment.vue'
+import NewsFeed from '../components/NewsFeed.vue'
+import Profile from '../components/Profile.vue'
 
 const routes = [
   {
@@ -43,6 +45,17 @@ const routes = [
     name: 'AddComment',
     component: AddComment
   },
+  {
+    path:'/news',
+    name: 'NewsFeed',
+    component: NewsFeed
+  },
+  {
+    path:'/profile',
+    name: 'Profile',
+    component: Profile
+  },
+  
 ]
 
 const router = createRouter({

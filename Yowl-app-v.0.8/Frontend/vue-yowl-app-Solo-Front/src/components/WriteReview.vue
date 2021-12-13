@@ -38,51 +38,35 @@
           <button class="btn btn-primary btn-block">Send Review</button>
         </form>
       </div>
-      <div @click="showReview" class="container">
-        <h2>click</h2>
-        <div>
-      
+      <div class="container-1">
+        
+        <div @click.prevent="showComments" class="container">
+          <h3>Comments</h3>
           <ul id="array-rendering">
-            <li v-for="(info, id) in infos" :key="id" class="item-container">
-              ID: "{{info.id}}"
-              Title: "{{ info.title }}"
-              Content: "{{info.content}}"
-              </li>
+            <li
+              v-for="(comentario, id) in comment"
+              :key="id"
+              class="item-container"
+            >
+              ID: "{{ comentario.id }}" Title: "{{ comentario.title }}" Content:
+              "{{ comentario.content }}"
+            </li>
           </ul>
-          
         </div>
-        <div @click="showComments" class="container">
-            <h3>Comments</h3>
-            
-              <ul id="array-rendering">
-                <li v-for="(comentario, id) in comment" :key="id" class="item-container">
-                  ID: "{{comentario.id}}"
-                  Title: "{{ comentario.title }}"
-                  Content: "{{comentario.content}}"
-                </li>
-              </ul>
-          </div>
-         
       </div>
-
-      
     </div>
-       
-      
-
-
     <h3 v-else>Hello, please log in to your account</h3>
   </div>
 </template>
+
 <script>
 import axios from "axios";
 import { mapGetters } from "vuex";
-import AddComment from './AddComment.vue'
-
-export default {
+/* import AddComment from './AddComment.vue'
+ */ export default {
   name: "WriteReview",
-  components:{
-    AddComment
+  components: {
+    /* AddComment */
   },
   data() {
     return {
@@ -90,63 +74,34 @@ export default {
       providerId: "",
       infos: {},
       title: "",
-      id:"",
+      id: "",
       content: "",
-      comment: {},//new line to try to bind comments to review all changes from here may break the app.
+      comment: {}, //new line to try to bind comments to review all changes from here may break the app.
       comment_title: "",
-      comment_review_id:"",
+      comment_review_id: "",
       //end of new changes
     };
   },
   methods: {
     //new line to try to bind comments to review all changes from here may break the app.
-    async showComments(){
-      try{
+    async showComments() {
+      try {
         const headers = {
-        'Content-Type': "application/json",
-        
-      };
-        const responses = await axios.get("/v1/comment/index",{
-          headers:headers,
+          "Content-Type": "application/json",
+        };
+        const responses = await axios.get("/v1/comment/index", {
+          headers: headers,
         });
         this.comment = responses.data;
-
-       
-      }catch(error){
-        console.log(error)
-      }
-    },
-    //end of new changes
-    async showReview() {
-      try {
-         const headers = {
-        'Content-Type': "application/json",
-        
-      };
-        const responses = await axios.get("/v1/review/index",{
-          headers:headers,
-        });
-        const datas = responses.data; // this level equals a For each register entire data
-        this.infos = datas;
-        
-        
-      
-
-     /*    const title = data.review.title; //this level give us only the title of the register
-        this.title = title; */
-
-       /*  const content = data.review.content;
-        this.content = content; */
-
-        
       } catch (error) {
         console.log(error);
       }
     },
+    //end of new changes
+    
     async sendReview() {
       const headers = {
-        'Content-Type': "application/json",
-        
+        "Content-Type": "application/json",
       };
       try {
         const response = await axios.post("/v1/review", {
@@ -162,11 +117,12 @@ export default {
       }
     },
   },
-   computed: {
-    ...mapGetters(['user'])
-  }
+  computed: {
+    ...mapGetters(["user"]),
+  },
 };
 </script>
+
 <style scoped>
 .wrapper {
   border: dotted 3px red;
@@ -178,20 +134,21 @@ export default {
   min-width: 900px;
   max-height: 340px;
   overflow: scroll;
-  
 }
 .container {
   border: solid 3px yellow;
   min-width: fit-content;
   overflow-wrap: break-word;
 }
-.item-container{
-  border: dotted 5px blue;
+.container-1 {
+  width: 850px;
+}
+.item-container {
   margin: 10px;
   padding: 5px;
   align-content: space-between;
 }
-.form-control{
-  width:fit-content;
+.form-control {
+  width: fit-content;
 }
 </style>

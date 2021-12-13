@@ -36,7 +36,10 @@ export default {
 }
 
 body {
-  background: #1c8ef9 !important;
+  background-image: url("../public/backgroundApp.jpg") !important;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   font-weight: 400;
@@ -78,13 +81,14 @@ html,
   justify-content: center;
   flex-direction: column;
   text-align: left;
+  
 }
 
 .auth-inner {
+  background-color: #ffffff3b;
   width: auto;
   max-height:720px;
   margin: auto;
-  background: #ffffff;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   padding: 40px 55px 45px 55px;
   border-radius: 15px;
