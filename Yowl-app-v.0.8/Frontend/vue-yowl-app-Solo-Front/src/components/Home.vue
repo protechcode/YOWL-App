@@ -1,26 +1,30 @@
 <template>
   <div class="home">
     <div class="logo">
-        <img src="tell-me-opp-logo.png" width="300" height="300" style="vertical-align:middle;margin:0px 50px">
+        <img src="tell-me-opp-logo2.png" width="300" height="300" style="vertical-align:middle;margin:0px 50px">
     </div>
-
-    <h3 v-if="user">Hi, {{ user }}</h3>
+  
+    <div v-if="token">
+      <h3 >Hi, {{ user }}</h3>
+       <NewsFeed />
+    </div>
     <h3 v-else>Hello, please log in to your account</h3>
-    <AddComment/>
+    
 
   </div>
 </template>
 
 <script>
-import AddComment from "./AddComment.vue"
+import NewsFeed from "./NewsFeed";
 export default {
   name: "Home",
   components: {
-    AddComment,
+    NewsFeed,
   },
   data() {
     return {
-      user: localStorage.getItem("email"),
+      user: localStorage.getItem("userName"),
+      token: localStorage.getItem("token"),
     };
   },
 };
@@ -29,10 +33,7 @@ export default {
 </script>
 
 <style scoped>
-  .logo {
-    border: 1px solid black;
-    border-radius: 10px; 
-    margin: 20px;
-  }
-  
+.logo {
+  margin: 20px;
+}
 </style>

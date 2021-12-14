@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
-    <div class="container-1">
-      <h3>Hello USER</h3>
+    <div v-if="token" class="container-1">
+      <h3 >Hello {{ user }}</h3>
       <h3>¿What do you want to do?</h3>
       <div class="”container-3”">
         <button draggable="true" id="button_1" class="btn btn-outline-primary">
@@ -10,10 +10,10 @@
         <button draggable="true" id="button_2" class="btn btn-outline-primary">
           <router-link to="/news" class="nav-link">News Feed</router-link>
         </button>
-        <!-- <NewReview />
-        <NewsFeed /> -->
+        <button>Button</button>
       </div>
     </div>
+    <h3 v-else>Hello, please log in to your account</h3>
     <!-- <div class="container-2">
       <h3>Your Reviews</h3>
     </div> -->
@@ -23,6 +23,12 @@
 <script>
 export default {
   name: "Profile",
+  data() {
+    return {
+      user: localStorage.getItem("userName"),
+      token: localStorage.getItem("token"),
+    }
+  }
 };
 </script>
 
@@ -32,11 +38,7 @@ button {
     background: white;
     margin: 15px;
 }
-button:hover{
-    width: 150px;
-    color: white;
-    margin: 15px;
-}
+
 
 .wrapper {
   height: 500 px;
@@ -49,6 +51,8 @@ button:hover{
   min-width: 900px;
   max-height: 340px;
   /* overflow: scroll; */
+  align-self: center;
+  color: white;
 }
 .container-1 {
   align-content: space-between;

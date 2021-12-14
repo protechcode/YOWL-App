@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('user', [UserController::class, 'index']);
+Route::post('user/{id}', [UserController::class, 'update']);
 Route::get('provider', [ProviderController::class, 'index']);
        
 Route::prefix('v1')->group(function () {

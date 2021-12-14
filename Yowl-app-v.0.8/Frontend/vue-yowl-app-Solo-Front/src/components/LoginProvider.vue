@@ -1,21 +1,22 @@
 <template>
     <div>
-        <ButtonLogin/>
+        
         <form @submit.prevent="handleSubmit">
             <h3>Login as a Provider</h3>
 
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" class="form-control" v-model="email" placeholder="Email"/>
+                <input type="email" class="form-control" v-model="email" placeholder="Email" required/>
             </div>
 
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" class="form-control" v-model="password" placeholder="Password"/>
+                <input type="password" class="form-control" v-model="password" placeholder="Password" required/>
             </div>
 
             <button class="btn btn-primary btn-block">Login</button>
         </form>
+        <ButtonLogin/>
     </div>
 </template>
 
@@ -60,3 +61,12 @@ import ButtonLogin from './ButtonLogin.vue'
         },
     }
 </script>
+
+<style scoped>
+form {
+    padding: 30px;
+}
+    /* .auth-inner {
+        margin: 0;
+    } */
+</style>

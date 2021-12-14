@@ -5,7 +5,7 @@
     
     <div class="auth-wrapper">
       <div class="auth-inner">
-        <router-view />
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -56,6 +56,8 @@ label,
 span {
   font-weight: 500;
   font-family: "Fira Sans", sans-serif;
+    color: white;
+
 }
 
 body,
@@ -85,13 +87,13 @@ html,
 }
 
 .auth-inner {
-  background-color: #ffffff3b;
+  background-color: #f80c0c3b;
   width: auto;
-  max-height:720px;
+  max-height:690px;
   margin: auto;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
-  padding: 40px 55px 45px 55px;
-  border-radius: 15px;
+  padding: 35px 15px 100px 15px;
+  border-radius: 45px;
   transition: all 0.4s;
 }
 

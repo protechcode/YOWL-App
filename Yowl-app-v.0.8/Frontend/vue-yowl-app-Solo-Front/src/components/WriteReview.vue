@@ -2,7 +2,7 @@
   <div>
     <div class="wrapper" v-if="user">
       <div class="container">
-         <AddComment/>
+        <AddComment />
         <h1>new review</h1>
         <form @submit.prevent="sendReview">
           <div class="form-group">
@@ -12,6 +12,7 @@
               class="form-control"
               v-model="title"
               placeholder="Title of review"
+              required
             />
           </div>
           <div class="form-group">
@@ -21,6 +22,7 @@
               class="form-control"
               v-model="content"
               placeholder="Content of review"
+              required
             />
           </div>
           <div class="form-group">
@@ -33,12 +35,13 @@
               class="form-control"
               v-model="providerId"
               placeholder="Content of review"
+              required
             />
           </div>
           <button class="btn btn-primary btn-block">Send Review</button>
         </form>
       </div>
-      <div class="container-1">
+      <!-- <div class="container-1">
         
         <div @click.prevent="showComments" class="container">
           <h3>Comments</h3>
@@ -53,7 +56,7 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->
     </div>
     <h3 v-else>Hello, please log in to your account</h3>
   </div>
@@ -98,7 +101,7 @@ import { mapGetters } from "vuex";
       }
     },
     //end of new changes
-    
+
     async sendReview() {
       const headers = {
         "Content-Type": "application/json",
@@ -125,20 +128,20 @@ import { mapGetters } from "vuex";
 
 <style scoped>
 .wrapper {
-  border: dotted 3px red;
-  display: grid;
+  display: flex;
   grid-template-columns: 140px 140px;
-  align-content: space-between;
-  justify-content: space-between;
+  align-content: center;
+  justify-content: center;
   gap: 20px;
   min-width: 900px;
   max-height: 340px;
-  overflow: scroll;
 }
 .container {
-  border: solid 3px yellow;
   min-width: fit-content;
   overflow-wrap: break-word;
+  align-content: center;
+  justify-content: center;
+  height: fit-content;
 }
 .container-1 {
   width: 850px;

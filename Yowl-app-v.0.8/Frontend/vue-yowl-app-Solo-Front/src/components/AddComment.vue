@@ -10,6 +10,7 @@
             class="form-control"
             v-model="title"
             placeholder="Title of comment"
+            required
           />
         </div>
         <div class="form-group">
@@ -19,6 +20,7 @@
             class="form-control"
             v-model="content"
             placeholder="content of comment"
+            required
           />
         </div>
         <div class="form-group">
@@ -28,6 +30,7 @@
             class="form-control"
             v-model="review_id"
             placeholder="Insert Id"
+            required
           />
         </div>
         <div class="form-group">

@@ -15,12 +15,11 @@
         </ul>
         <ul class="navbar-nav ml-auto" v-else>
           <router-link to="/review" class="nav-link">New Review</router-link>
-
-          <li class="nav-item">
-            <a @click="handleClick" class="nav-link">Log Out</a>
-          </li>
           <li class="nav-item">
             <router-link to="/profile" class="nav-link">Profile</router-link>
+          </li>
+          <li class="nav-item">
+            <a @click="handleClick" class="nav-link">Log Out</a>
           </li>
         </ul>
       </div>

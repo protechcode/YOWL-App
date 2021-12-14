@@ -63,7 +63,7 @@ class ProviderAuthController extends Controller
         //se valida la data
         $validator = Validator::make($credentials, [
             'email' => 'required|string',
-            'password' => 'required|string|min:1'
+            'password' => 'required|string|min:1|max:12'
         ]);
        
         // 
